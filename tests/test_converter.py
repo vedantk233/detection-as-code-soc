@@ -19,7 +19,7 @@ class ConverterTests(unittest.TestCase):
         self.assertIn("eventSource", pattern["detail"])
         self.assertNotIn("detail", pattern["detail"])
         self.assertEqual(
-            pattern["detail"]["userIdentity"]["type"], "Root"
+            pattern["detail"]["userIdentity"]["type"], ["Root"]
         )
 
 
