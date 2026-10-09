@@ -1,0 +1,6 @@
+{
+  "eventSource": "signin.amazonaws.com",
+  "eventName": "ConsoleLogin",
+  "userIdentity": {"type": "IAMUser"},
+  "responseElements": {"ConsoleLogin": "Success"}
+}
