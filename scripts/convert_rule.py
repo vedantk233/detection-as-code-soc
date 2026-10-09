@@ -8,7 +8,7 @@ FIELD_MAP = {
     "event_source": ["eventSource"],
     "event_name": ["eventName"],
     "user_type": ["userIdentity", "type"],
-    "response_elements": ["responseElements"],
+    "response_login": ["responseElements", "ConsoleLogin"],
 }
 
 
@@ -25,7 +25,7 @@ def convert_rule(rule):
         for field in path[:-1]:
             current = current.setdefault(field, {})
 
-        current[path[-1]] = value
+        current[path[-1]] = [value]
 
     return {
         "source": ["aws.signin"],

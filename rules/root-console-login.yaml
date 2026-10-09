@@ -10,8 +10,7 @@ query:
   event_source: signin.amazonaws.com
   event_name: ConsoleLogin
   user_type: Root
-  response_elements:
-    ConsoleLogin: Success
+  response_login: Success
 false_positive_notes: >
   Verify whether the root login was authorized.
   Root account use should be exceptional.

@@ -6,13 +6,21 @@
     "AWS Console Sign In via CloudTrail"
   ],
   "detail": {
-    "eventSource": "signin.amazonaws.com",
-    "eventName": "ConsoleLogin",
+    "eventSource": [
+      "signin.amazonaws.com"
+    ],
+    "eventName": [
+      "ConsoleLogin"
+    ],
     "userIdentity": {
-      "type": "Root"
+      "type": [
+        "Root"
+      ]
     },
     "responseElements": {
-      "ConsoleLogin": "Success"
+      "ConsoleLogin": [
+        "Success"
+      ]
     }
   }
 }

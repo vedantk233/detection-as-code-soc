@@ -7,7 +7,7 @@ def matches_rule(event, rule):
         "event_source": event.get("eventSource"),
         "event_name": event.get("eventName"),
         "user_type": identity.get("type"),
-        "response_elements": response,
+        "response_login": response.get("ConsoleLogin"),
     }
 
     return all(checks.get(key) == value for key, value in query.items())
