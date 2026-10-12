@@ -1,0 +1,45 @@
+{
+  "Comment": "SOC playbook with explicit approval gate and simulation-only containment",
+  "StartAt": "RecordIncident",
+  "States": {
+    "RecordIncident": {
+      "Type": "Pass",
+      "Parameters": {
+        "incident_type": "suspected_compromised_ec2",
+        "status": "awaiting_approval",
+        "simulation_only": true,
+        "input.$": "$"
+      },
+      "Next": "ApprovalGate"
+    },
+    "ApprovalGate": {
+      "Type": "Choice",
+      "Choices": [
+        {
+          "Variable": "$.human_approved",
+          "BooleanEquals": true,
+          "Next": "SimulatedContainment"
+        }
+      ],
+      "Default": "AwaitHumanApproval"
+    },
+    "AwaitHumanApproval": {
+      "Type": "Pass",
+      "Result": {
+        "status": "approval_required",
+        "containment_executed": false
+      },
+      "End": true
+    },
+    "SimulatedContainment": {
+      "Type": "Pass",
+      "Parameters": {
+        "status": "simulated_containment_recorded",
+        "containment_executed": false,
+        "simulation_only": true,
+        "incident_input.$": "$"
+      },
+      "End": true
+    }
+  }
+}
