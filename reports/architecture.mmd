@@ -1,0 +1,9 @@
+flowchart TD
+ A[GitHub Rules Repository] --> B[Unit Tests / GitHub Actions]
+ B --> C[EventBridge Detection Rules]
+ C --> D[Alert Target - Pending]
+ D --> E[Step Functions SOAR]
+ E --> F[Triage / Approval Placeholder]
+ F --> G[Containment / Evidence / Notification - Pending]
+ E --> H[Case Metrics Dashboard - Demo Data]
+ C --> I[MITRE ATT&CK Mapping - Initial]
