@@ -49,6 +49,18 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Diagnose GitHub OIDC context
+        env:
+          GH_REPOSITORY: ${{ github.repository }}
+          GH_REF: ${{ github.ref }}
+          GH_EVENT: ${{ github.event_name }}
+          GH_ENVIRONMENT: ${{ github.environment }}
+        run: |
+          echo "Repository: $GH_REPOSITORY"
+          echo "Ref: $GH_REF"
+          echo "Event: $GH_EVENT"
+          echo "Environment: ${GH_ENVIRONMENT:-none}"
+
       - name: Configure AWS credentials with OIDC
         uses: aws-actions/configure-aws-credentials@v4
         with:
