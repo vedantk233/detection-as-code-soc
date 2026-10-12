@@ -1,4 +1,4 @@
-name: Detection Rule Tests
+name: Detection Rule Tests and Deployment
 
 on:
   push:
@@ -6,10 +6,12 @@ on:
   pull_request:
     branches: [main]
 
+permissions:
+  contents: read
+
 jobs:
   test:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
@@ -24,3 +26,37 @@ jobs:
 
       - name: Run detection tests
         run: python -m unittest discover -s tests -v
+
+      - name: Validate deployment script
+        run: python -m py_compile scripts/deploy_rule.py scripts/convert_rule.py
+
+  deploy:
+    needs: test
+    if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Configure AWS credentials with OIDC
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          role-to-assume: arn:aws:iam::547641909662:role/DetectionAsCodeGitHubDeployRole
+          aws-region: ap-south-1
+
+      - name: Verify AWS identity
+        run: aws sts get-caller-identity
+
+      - name: Deploy root console login detection
+        run: python scripts/deploy_rule.py rules/root-console-login.yaml
