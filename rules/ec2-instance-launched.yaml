@@ -1,0 +1,14 @@
+name: ec2-instance-launched
+description: Detect AWS CloudTrail event RunInstances.
+log_source: aws_cloudtrail
+attack:
+  technique: T1578.002
+  name: Create Cloud Instance
+severity: medium
+owner: soc-team
+query:
+  event_source: ec2.amazonaws.com
+  event_name: RunInstances
+false_positive_notes: Validate the actor, change request, resource, and business context
+  before escalation.
+enabled: true

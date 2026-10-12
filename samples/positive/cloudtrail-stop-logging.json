@@ -1,0 +1,7 @@
+{
+  "eventSource": "cloudtrail.amazonaws.com",
+  "eventName": "StopLogging",
+  "userIdentity": {
+    "type": "IAMUser"
+  }
+}

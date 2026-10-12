@@ -27,9 +27,25 @@ def convert_rule(rule):
 
         current[path[-1]] = [value]
 
+    event_source = rule.get("query", {}).get("event_source", "")
+    source_map = {
+        "signin.amazonaws.com": "aws.signin",
+        "iam.amazonaws.com": "aws.iam",
+        "cloudtrail.amazonaws.com": "aws.cloudtrail",
+        "s3.amazonaws.com": "aws.s3",
+        "ec2.amazonaws.com": "aws.ec2",
+    }
+    if event_source not in source_map:
+        raise ValueError(f"Unsupported event source: {event_source}")
+
+    detail_type = (
+        "AWS Console Sign In via CloudTrail"
+        if event_source == "signin.amazonaws.com"
+        else "AWS API Call via CloudTrail"
+    )
     return {
-        "source": ["aws.signin"],
-        "detail-type": ["AWS Console Sign In via CloudTrail"],
+        "source": [source_map[event_source]],
+        "detail-type": [detail_type],
         "detail": detail,
     }
 

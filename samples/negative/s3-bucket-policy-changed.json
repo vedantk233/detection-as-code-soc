@@ -1,0 +1,7 @@
+{
+  "eventSource": "s3.amazonaws.com",
+  "eventName": "UnrelatedEvent",
+  "userIdentity": {
+    "type": "IAMUser"
+  }
+}

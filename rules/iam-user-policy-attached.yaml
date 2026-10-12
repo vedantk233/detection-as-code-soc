@@ -1,0 +1,14 @@
+name: iam-user-policy-attached
+description: Detect AWS CloudTrail event AttachUserPolicy.
+log_source: aws_cloudtrail
+attack:
+  technique: T1098
+  name: Account Manipulation
+severity: high
+owner: soc-team
+query:
+  event_source: iam.amazonaws.com
+  event_name: AttachUserPolicy
+false_positive_notes: Validate the actor, change request, resource, and business context
+  before escalation.
+enabled: true

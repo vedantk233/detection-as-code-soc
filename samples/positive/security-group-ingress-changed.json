@@ -1,0 +1,7 @@
+{
+  "eventSource": "ec2.amazonaws.com",
+  "eventName": "AuthorizeSecurityGroupIngress",
+  "userIdentity": {
+    "type": "IAMUser"
+  }
+}

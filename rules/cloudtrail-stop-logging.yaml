@@ -1,0 +1,14 @@
+name: cloudtrail-stop-logging
+description: Detect AWS CloudTrail event StopLogging.
+log_source: aws_cloudtrail
+attack:
+  technique: T1562.008
+  name: Disable or Modify Cloud Logs
+severity: critical
+owner: soc-team
+query:
+  event_source: cloudtrail.amazonaws.com
+  event_name: StopLogging
+false_positive_notes: Validate the actor, change request, resource, and business context
+  before escalation.
+enabled: true

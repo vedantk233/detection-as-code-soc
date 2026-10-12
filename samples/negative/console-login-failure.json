@@ -1,0 +1,10 @@
+{
+  "eventSource": "signin.amazonaws.com",
+  "eventName": "UnrelatedEvent",
+  "userIdentity": {
+    "type": "IAMUser"
+  },
+  "responseElements": {
+    "ConsoleLogin": "Failure"
+  }
+}

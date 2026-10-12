@@ -1,0 +1,14 @@
+name: security-group-ingress-changed
+description: Detect AWS CloudTrail event AuthorizeSecurityGroupIngress.
+log_source: aws_cloudtrail
+attack:
+  technique: T1562.007
+  name: Disable or Modify Cloud Firewall
+severity: high
+owner: soc-team
+query:
+  event_source: ec2.amazonaws.com
+  event_name: AuthorizeSecurityGroupIngress
+false_positive_notes: Validate the actor, change request, resource, and business context
+  before escalation.
+enabled: true

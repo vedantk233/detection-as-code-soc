@@ -1,0 +1,14 @@
+name: cloudtrail-delete-trail
+description: Detect AWS CloudTrail event DeleteTrail.
+log_source: aws_cloudtrail
+attack:
+  technique: T1562.008
+  name: Disable or Modify Cloud Logs
+severity: high
+owner: soc-team
+query:
+  event_source: cloudtrail.amazonaws.com
+  event_name: DeleteTrail
+false_positive_notes: Validate the actor, change request, resource, and business context
+  before escalation.
+enabled: true

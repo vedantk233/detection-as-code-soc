@@ -1,0 +1,14 @@
+name: s3-bucket-policy-changed
+description: Detect AWS CloudTrail event PutBucketPolicy.
+log_source: aws_cloudtrail
+attack:
+  technique: T1530
+  name: Data from Cloud Storage Object
+severity: high
+owner: soc-team
+query:
+  event_source: s3.amazonaws.com
+  event_name: PutBucketPolicy
+false_positive_notes: Validate the actor, change request, resource, and business context
+  before escalation.
+enabled: true

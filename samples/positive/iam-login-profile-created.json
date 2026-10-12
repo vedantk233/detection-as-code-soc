@@ -1,0 +1,7 @@
+{
+  "eventSource": "iam.amazonaws.com",
+  "eventName": "CreateLoginProfile",
+  "userIdentity": {
+    "type": "IAMUser"
+  }
+}
