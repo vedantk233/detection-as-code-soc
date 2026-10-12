@@ -1,0 +1,28 @@
+{
+  "name": "Detection-as-Code SOC - Initial Coverage",
+  "versions": {
+    "attack": "16",
+    "navigator": "5.1.0",
+    "layer": "4.5"
+  },
+  "domain": "enterprise-attack",
+  "description": "Initial proposed technique mappings. Analyst validation required; not validated detection coverage.",
+  "techniques": [
+    {"techniqueID":"T1110","tactic":"credential-access","color":"#ff6666","comment":"Console login failures; validate mapping"},
+    {"techniqueID":"T1098","tactic":"persistence","color":"#ff6666","comment":"IAM access key or policy changes; validate sub-technique mapping"},
+    {"techniqueID":"T1562.008","tactic":"defense-evasion","color":"#ff6666","comment":"CloudTrail logging changes; validate mapping"},
+    {"techniqueID":"T1530","tactic":"collection","color":"#ff6666","comment":"S3 bucket policy change; tentative mapping, validate before claiming coverage"},
+    {"techniqueID":"T1578.002","tactic":"defense-evasion","color":"#ff6666","comment":"EC2 instance launch; tentative mapping, validate before claiming coverage"}
+  ],
+  "legendItems": [
+    {"label":"Proposed mapping - validation required","color":"#ff6666"}
+  ],
+  "gradient": {
+    "colors": ["#ff6666", "#ffe766", "#66cc88"],
+    "minValue": 0,
+    "maxValue": 100
+  },
+  "metadata": [
+    {"name":"Status","value":"Initial proposed mappings, not measured coverage"}
+  ]
+}

@@ -1,0 +1,4 @@
+incident_id,incident_type,severity,status,detected_at,resolved_at,mttd_minutes,mttr_minutes
+INC-001,compromised_iam_key,High,Awaiting Approval,2026-10-12T09:00:00Z,2026-10-12T09:35:00Z,5,35
+INC-002,public_s3_bucket,High,Investigating,2026-10-12T09:10:00Z,,8,
+INC-003,compromised_ec2,Critical,Awaiting Approval,2026-10-12T09:20:00Z,,3,

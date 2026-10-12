@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Detection & Response SOC Dashboard</title>
+<style>
+body{font-family:Arial;margin:30px;background:#f4f6f9;color:#172033}
+h1{color:#12345a}.grid{display:flex;gap:16px;flex-wrap:wrap}
+.card{background:white;padding:20px;border-radius:10px;min-width:150px;box-shadow:0 2px 8px #ddd}
+small{color:#555}
+table{border-collapse:collapse;background:white;width:100%;margin-top:20px}
+td,th{padding:12px;border:1px solid #ddd;text-align:left}
+</style>
+</head>
+<body>
+<h1>Detection &amp; Response SOC Dashboard</h1>
+<p><b>DEMO DATA — synthetic sample incidents, not live SOC telemetry.</b></p>
+<div class="grid">
+<div class="card"><small>Total incidents</small><h2>3</h2></div>
+<div class="card"><small>High/Critical</small><h2>3</h2></div>
+<div class="card"><small>Average MTTD</small><h2>5.3 min</h2></div>
+<div class="card"><small>Resolved incident MTTR</small><h2>35 min</h2></div>
+</div>
+<table>
+<tr><th>ID</th><th>Incident</th><th>Severity</th><th>Status</th><th>MTTD</th><th>MTTR</th></tr>
+<tr><td>INC-001</td><td>Compromised IAM key</td><td>High</td><td>Awaiting Approval</td><td>5 min</td><td>35 min*</td></tr>
+<tr><td>INC-002</td><td>Public S3 bucket</td><td>High</td><td>Investigating</td><td>8 min</td><td>Pending</td></tr>
+<tr><td>INC-003</td><td>Compromised EC2</td><td>Critical</td><td>Awaiting Approval</td><td>3 min</td><td>Pending</td></tr>
+</table>
+<p><small>*Illustrative sample metric; this is not measured AWS incident data.</small></p>
+</body></html>

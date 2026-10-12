@@ -1,0 +1,24 @@
+{
+  "Comment": "Triage public S3 bucket finding; approval required before remediation.",
+  "StartAt": "RecordIncident",
+  "States": {
+    "RecordIncident": {
+      "Type": "Pass",
+      "Parameters": {
+        "incident_type": "public_s3_bucket",
+        "status": "triage",
+        "approval_required": true,
+        "input.$": "$"
+      },
+      "Next": "AwaitHumanApproval"
+    },
+    "AwaitHumanApproval": {
+      "Type": "Pass",
+      "Result": {
+        "status": "approval_required",
+        "remediation_executed": false
+      },
+      "End": true
+    }
+  }
+}

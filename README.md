@@ -1,29 +1,19 @@
 # Detection-as-Code SOC
 
-A Git-managed detection engineering project with automated testing,
-deployment workflows, SOAR playbooks, attack simulation, and MITRE
-ATT&CK coverage.
+## Implemented
+- GitHub Actions detection test and deployment workflow
+- Ten detection rules with sample events and unit tests
+- EventBridge rules deployed in ap-south-1
+- Three Step Functions SOAR triage skeletons with approval-required states
+- Synthetic incident CSV and HTML dashboard
+- Initial MITRE ATT&CK technique mapping layer
 
-## Current capabilities
-- YAML-based detection rule for successful AWS root console logins.
-- Positive and negative sample CloudTrail-style events.
-- Python detection evaluation logic.
-- Automated unit tests using Python unittest.
-- GitHub Actions workflow for pushes and pull requests.
+## Limitations
+- EventBridge alert targets and end-to-end alert delivery are not verified.
+- SOAR approval is a placeholder; no containment or remediation is executed.
+- Dashboard metrics use synthetic demo data, not live incident telemetry.
+- MITRE mappings are proposed and require analyst validation.
+- Attack simulation was not run.
 
-## Run locally
-Install dependencies:
-    python -m pip install -r requirements.txt
-
-Run tests:
-    python -m unittest discover -s tests -v
-
-## Project structure
-- `rules/` — YAML detection rules
-- `samples/positive/` — Events expected to match
-- `samples/negative/` — Events expected not to match
-- `scripts/` — Detection evaluation and deployment utilities
-- `tests/` — Automated tests
-- `deploy/` — Deployment configuration
-- `.github/workflows/` — CI workflows
-- `docs/` — Architecture and project documentation
+## Validation
+Run `python -m unittest discover -s tests -v` and validate JSON files with `python -m json.tool`.

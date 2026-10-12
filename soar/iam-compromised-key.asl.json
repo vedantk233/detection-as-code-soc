@@ -1,0 +1,24 @@
+{
+  "Comment": "SOAR playbook for suspected compromised IAM access key; approval required before containment.",
+  "StartAt": "RecordIncident",
+  "States": {
+    "RecordIncident": {
+      "Type": "Pass",
+      "Parameters": {
+        "incident_type": "suspected_compromised_iam_key",
+        "status": "triage",
+        "approval_required": true,
+        "input.$": "$"
+      },
+      "Next": "AwaitHumanApproval"
+    },
+    "AwaitHumanApproval": {
+      "Type": "Pass",
+      "Result": {
+        "status": "approval_required",
+        "containment_executed": false
+      },
+      "End": true
+    }
+  }
+}
